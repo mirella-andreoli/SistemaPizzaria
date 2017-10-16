@@ -1,10 +1,15 @@
 //Entidade com os dados de um pedido
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Pedido extends EntidadeBase {
 
+    SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
+
     public Pedido() {
         this.ListaPizzas = new ArrayList<>();
+        this.Data = new Date(System.currentTimeMillis());
     }
 
     private Cliente ClientePedido;
@@ -14,6 +19,7 @@ public class Pedido extends EntidadeBase {
     private double Total;
     private double ValorCartao;
     private double ValorDinheiro;
+    private Date Data;
 
     // ------- getters e setters ------- //
     public String getObservacoesPizza() {
@@ -76,7 +82,7 @@ public class Pedido extends EntidadeBase {
 
 // -------- Métodos sobrepostos -------- //
     //Salva um pedido no banco de dados
-    public boolean salvarBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+    public boolean salvarInclusaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
         /*
         Implementar os método para salvar no BD
         TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
@@ -86,11 +92,36 @@ public class Pedido extends EntidadeBase {
         mensagemRetorno = "Pedido salvo com sucesso!";
         return true;
     }
+    
+    //Edita um pedido no banco de dados
+    public boolean salvarEdicaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Pedido editado com sucesso!";
+        return true;
+    }
+
+    //Exclui um pedido no banco de dados
+    public boolean salvarExclusaoBancoDados(String Codigo, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Pedido Excluido com sucesso!";
+        return true;
+    }
 
     //Retorna os dados de um pedido
     public String toString() {
 
-        return "-------- Pedido -------- \n" + super.toString() + ClientePedido.toString()
+        return "-------- Pedido -------- \n" + sd.format(this.Data)
+                + "\n" + super.toString() + ClientePedido.toString()
                 + "\nPizzas: " + toStringListaPizzas()
                 + "\nTaxa de entrega: " + String.format("%.2f", getTaxaEntrega())
                 + "\nTotal: R$" + String.format("%.2f", getTotal())
@@ -113,5 +144,4 @@ public class Pedido extends EntidadeBase {
 
         return lista;
     }
-
 }

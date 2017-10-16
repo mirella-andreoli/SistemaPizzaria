@@ -1,7 +1,10 @@
 
+import java.io.PrintStream;
+
+
 public class SistemaPizzaria{
 
-    /**Teste
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -33,7 +36,23 @@ public class SistemaPizzaria{
         pedido.addPizza(pizza);
         pedido.addPizza(pizza2);
         System.out.println(pedido.toString());
+        
+        PrintStream s = System.out; // Importada a Java.io.PrintStream e criad
+        
+        
+        s.println("\n \t \t \u2554");
+        
+        
+        /*
+        If you are developing with JDK 1.5 you can solve this using java.util.Formatter:
 
+        String format = "%-20s %5d\n";
+        System.out.format(format, "test", 1);
+        System.out.format(format, "test2", 20);
+        System.out.format(format, "test3", 5000);
+        
+        
+        */
     }
 
 }

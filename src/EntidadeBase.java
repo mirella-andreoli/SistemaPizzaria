@@ -20,6 +20,10 @@ public abstract class EntidadeBase implements IEntidade {
     }
 
     //Método abstrato para implementação em entidades filhas
-    public abstract boolean salvarBancoDados(EntidadeBase Entidade, String mensagemRetorno);
+    public abstract boolean salvarInclusaoBancoDados(EntidadeBase Entidade, String mensagemRetorno);
+
+    public abstract boolean salvarEdicaoBancoDados(EntidadeBase Entidade, String mensagemRetorno);
+
+    public abstract boolean salvarExclusaoBancoDados(String Codigo, String mensagemRetorno);
 
 }

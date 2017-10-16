@@ -32,7 +32,7 @@ public class Cliente extends EntidadeBase {
 
     // -------- Métodos sobrepostos -------- // 
     //Salva um cliente no banco de dados
-    public boolean salvarBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+    public boolean salvarInclusaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
 
         /*
         Implementar os método para salvar um cliente no BD
@@ -41,6 +41,30 @@ public class Cliente extends EntidadeBase {
          */
         //Se der certo
         mensagemRetorno = "Cliente salvo com sucesso!";
+        return true;
+    }
+
+    //Edita um Cliente no banco de dados
+    public boolean salvarEdicaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Cliente editado com sucesso!";
+        return true;
+    }
+
+    //Exclui um Cliente no banco de dados
+    public boolean salvarExclusaoBancoDados(String Codigo, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Cliente Excluido com sucesso!";
         return true;
     }
 

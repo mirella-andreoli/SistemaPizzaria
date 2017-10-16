@@ -23,7 +23,7 @@ public class Pizza extends EntidadeBase {
 
     // -------- Métodos sobrepostos -------- // 
     //Salva uma pizza no banco de dados
-    public boolean salvarBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+    public boolean salvarInclusaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
         /*
         Implementar os método para salvar no BD
         TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
@@ -31,6 +31,30 @@ public class Pizza extends EntidadeBase {
          */
         //Se der certo
         mensagemRetorno = "Pizza salva com sucesso!";
+        return true;
+    }
+
+    //Edita uma pizza no banco de dados
+    public boolean salvarEdicaoBancoDados(EntidadeBase Entidade, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Pizza editada com sucesso!";
+        return true;
+    }
+
+    //Exclui uma pizza no banco de dados
+    public boolean salvarExclusaoBancoDados(String Codigo, String mensagemRetorno) {
+        /*
+        Implementar os método para salvar no BD
+        TO DO: Fazer os tratamentos de erro retornando False + mensagem de erro 
+        para retorno
+         */
+        //Se der certo
+        mensagemRetorno = "Pizza Excluida com sucesso!";
         return true;
     }
 
