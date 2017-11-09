@@ -18,7 +18,7 @@ java.exe -jar SistemaPizzaria.jar
 
 ----------
 ->Salvar este arquivo texto com a extensão ".bat"
-
+OBS:   ".jar" está na pasta 'dist'
 
 ##Para conexão ao banco:
 Método dbCon() da classe EntidadeBase possui dados de conexão para banco de dados.
@@ -32,3 +32,5 @@ Método dbCon() da classe EntidadeBase possui dados de conexão para banco de da
         
         String senha = "postgres";    
         //senha de acesso ao servidor
+
+OBS:   Classes estão na pasta 'src'
