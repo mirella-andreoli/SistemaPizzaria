@@ -7,9 +7,13 @@ Criar novo arquivo texto com o texto abaixo:
 -----------
 
 @echo off 
+
 C:
+
 CD \CAMINHO COMPLETO DO DIRETORIO ONDE ESTA O JAR\
+
 Title Sistema Pizzaria
+
 java.exe -jar SistemaPizzaria.jar
 
 ----------
