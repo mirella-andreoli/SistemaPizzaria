@@ -375,7 +375,9 @@ public class Pedido extends EntidadeBase {
         double valorTotalDinheiro=0,valorTotalCartao=0,valorTotalTaxa=0, valorTotalDia=0;
         int qtdPedidos=0, qtdPizzas=0;
         Date dataVendas=null;
-        
+        if (listaRegistros.isEmpty()){
+            return listaRegistros;
+        }
         menu.imprimeCabecalho(" Pizzaria Nacoes - Fechamento de vendas  ");
         //O for abaixo percorre a lista de registros pelo codigo que é a key do map 
         //e imprime em tela os valores do objeto pedido que estão relacionadas a cada key
@@ -430,7 +432,7 @@ public class Pedido extends EntidadeBase {
                 Pizza pizzaPedido = new Pizza();
                 if ((pizzaPedido=(pizzaPedido.pesquisaSeletiva())) == null){
                     //Se não encontrar nenhuma pizza, chama novamente o metodo de pesquisa
-                    pizzaPedido=pizzaPedido.pesquisaSeletiva();
+                    pizzaPedido= new Pizza();
                 } else {
                     addPizza(pizzaPedido);
                     subTotal+=pizzaPedido.getPreco();
