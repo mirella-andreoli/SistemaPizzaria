@@ -305,8 +305,29 @@ public class Menu{
     //----Método de encerramento do sistema    
     public void sair(){
         //Sair do sistema
+                s.print("\n\t\t                     ___              ");
+                s.print("\n\t\t                    |  ~~--.          ");
+                s.print("\n\t\t                    |%=@%%/           ");
+                s.print("\n\t\t                    |o%%%/            ");
+                s.print("\n\t\t                 __ |%%o/             ");
+                s.print("\n\t\t           _,--~~ | |(_/ ._           ");
+                s.print("\n\t\t        ,/'  m%%%%| |o/ /  `\\.        ");
+                s.print("\n\t\t       /' m%%o(_)%| |/ /o%%m `\\       ");
+                s.print("\n\t\t     /' %%@=%o%%%o|   /(_)o%%% `\\     ");
+                s.print("\n\t\t    /  %o%%%%%=@%%|  /%%o%%@=%%  \\    ");
+                s.print("\n\t\t   |  (_)%(_)%%o%%| /%%%=@(_)%%%  |   ");
+                s.print("\n\t\t   | %%o%%%%o%%%(_|/%o%%o%%%%o%%% |   ");
+                s.print("\n\t\t   | %%o%(_)%%%%%o%(_)%%%o%%o%o%% |   ");
+                s.print("\n\t\t   |  (_)%%=@%(_)%o%o%%(_)%o(_)%  |   ");
+                s.print("\n\t\t    \\ ~%%o%%%%%o%o%=@%%o%%@%%o%~ /    ");
+                s.print("\n\t\t     \\. ~o%%(_)%%%o%(_)%%(_)o~ ,/     ");
+                s.print("\n\t\t       \\_ ~o%=@%(_)%o%%(_)%~ _/       ");
+                s.print("\n\t\t         `\\_~~o%%%o%%%%%~~_/'         ");
+                s.print("\n\t\t            `--..____,,--'            ");
+
                 imprimeCabecalho("             Pizzaria Nacoes             ");
                 imprimeCabecalho("        O sistema sera encerrado!!       ");
+                s.print("\n\n");
                 try {
                    Thread.sleep(2000);//Faz o console aguardar 2 segundos antes de fechar
                 } catch (Exception e) {
