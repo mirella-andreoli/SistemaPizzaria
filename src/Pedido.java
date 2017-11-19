@@ -394,7 +394,7 @@ public class Pedido extends EntidadeBase {
             }
             
         }
-        valorTotalDia=valorTotalCartao+valorTotalDinheiro+valorTotalTaxa;//Valor total de vendas no dia
+        valorTotalDia=valorTotalCartao+valorTotalDinheiro;//Valor total de vendas no dia
         s.print(toStringVendas(dataVendas, valorTotalCartao, valorTotalDinheiro, valorTotalTaxa, valorTotalDia, qtdPedidos, qtdPizzas));
         return listaRegistros;//retorna o map de registros a quem chamou o método
     }
@@ -409,9 +409,9 @@ public class Pedido extends EntidadeBase {
         double subTotal = 0;
 	Date dataAtual = new Date();
         setData(dataAtual);
-        Cliente clientePedido = new Cliente();
+        Cliente clientePedido;
         do {
-            
+            clientePedido = new Cliente();
             clientePedido = (menu.rotinaOpcaoCliente("Pedido",clientePedido,this));
         //Enquanto usuário não sair do menu de seleção de cliente ou selecionar um cliente
         //fica em loop, todo pedido deve ter cliente
