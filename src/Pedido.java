@@ -557,20 +557,19 @@ public class Pedido extends EntidadeBase {
                     //Se usuário não digitou zero e o registro foi encontrado no map
                     Pedido pedidoEdicao = dados.get(codigoRegistro);
                     solicitaDadosEdicao(pedidoEdicao);//irá solicitar os dados de alteração
-                    
-                    StringBuilder sql = new StringBuilder("update pedidos set codigocliente=?, observacoespizza=? where codigo="+codigoRegistro+";");
+                    Cliente cli = pedidoEdicao.getClientePedido();
+                    StringBuilder sql = new StringBuilder("update pedidos set codigocliente="+cli.getCodigo());
                     //StringBuilder permitirá concatenar os valores dos atributos do objeto para a instrucao sql
-
-                    sql.insert(1, pedidoEdicao.getClientePedido().getCodigo());
-                    sql.insert(2,"'"+getObservacoesPizza()+"'");
+                    sql.append(", observacoespizza='"+pedidoEdicao.getObservacoesPizza()+"'");
+                    sql.append(" where codigo="+codigoRegistro+";");
                     
                     //Abaixo ocorre a chamada ao método inserteDeleteBanco() passando a string que
                     //contém a instrução sql. Este método trata-se de um método 
                     //genérico para execução de insert,updates e deletes nas tabelas do banco
                     insertDeleteBanco(sql.toString());
                 }
-            } 
-            s.print("\n\t\tNenhum pedido encontrado/selecionado.");
+             if(codigoRegistro==0){s.print("\n\t\tNenhum pedido encontrado/selecionado.");}
+            }
         } catch (SQLException e){
             //Mostra exceção na tela em caso de erro de sql
             System.err.println( e.getClass().getName() + ": " + e.getMessage());
@@ -626,23 +625,31 @@ public class Pedido extends EntidadeBase {
         Scanner sc = new Scanner(System.in);
         Menu menu = new Menu();
         String editar;
-        
+        Cliente clientePedido;
         //Alterar o cliente do pedido
         do{
-            s.print("\n\n\t\t Deseja alterar o cliente do pedido? S - Sim / N - Não");
+            s.print("\n\n\t\t Deseja alterar o cliente do pedido?");
+            s.print("S - Sim / N - Não");
+            s.print("\n\n\t\t");
             editar=sc.nextLine();
-            Cliente clientePedido = new Cliente();
+            clientePedido = new Cliente();
             if (editar.equalsIgnoreCase("S")){
                 //Se desejar editar o cliente
                 do {
+                    clientePedido = new Cliente();
                     clientePedido = menu.rotinaOpcaoCliente("Pedido",clientePedido,this);
                     //Enquanto usuário não sair do menu de seleção de cliente ou selecionar um cliente
                     //fica em loop, todo pedido deve ter cliente
-                } while (ClientePedido == null);
+                } while (clientePedido == null);
+            }
+            if (editar.equalsIgnoreCase("N")){
+                clientePedido = new Cliente();
+                clientePedido=pedidoEdicao.getClientePedido();
             }
             //Enquanto usuário não digitar sim ou não para a edicao do cliente, fica em loop
         } while (!(editar.equalsIgnoreCase("S"))&& !(editar.equalsIgnoreCase("N")));
-                       
+        
+        pedidoEdicao.setClientePedido(clientePedido);
         //Alterar observações do pedido
         String info;
         do{
@@ -653,6 +660,7 @@ public class Pedido extends EntidadeBase {
             if (info.equalsIgnoreCase("S")){
                 s.print("\n\n\t\t#Informe as observaçoes sobre o pedido:");
                 info=sc.nextLine();
+                pedidoEdicao.setObservacoesPizza(info);
             } else {
                 info=pedidoEdicao.getObservacoesPizza();
             }
@@ -693,7 +701,7 @@ public class Pedido extends EntidadeBase {
                 if (codigoRegistro != 0) {
                     //Se usuário não digitou zero e o registro foi encontrado no map, irá construir a instrução sql do update
                     
-                    StringBuilder sql = new StringBuilder("delete from pedidoitens where codigopedido=");
+                    StringBuilder sql = new StringBuilder("delete from pedidositens where codigopedido=");
                     //StringBuilder sql armazenará a instrucao sql
                     sql.append(codigoRegistro+"; ");
                     //Feita a concatenação do codigo na string com a instrução sql para delete dos itens
