@@ -1,5 +1,5 @@
 # SistemaPizzaria
-Projeto 4º semestre SI - Prospecção de sistema de informação para pizzaria
+Projeto 4º semestre SI - Prova de conceito - Sistema para pizzaria (Console)
 
 
 ##Para criar arquivo "bat" para execução do .jar no console do windows:
